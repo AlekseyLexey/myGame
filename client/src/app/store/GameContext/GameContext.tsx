@@ -1,0 +1,20 @@
+import type { IAnswer, IGame, IQuestion } from "@/types/game";
+import { createContext } from "react";
+
+interface IGameContext {
+  game: IGame | null;
+  isModalOpen: boolean;
+  currentQuestion: IQuestion | null;
+  selectedAnswer: IAnswer | null;
+  updateGame: () => void;
+  openModal: (question: IQuestion) => void;
+  closeModal: () => void;
+  selectAnswer: (answer: IAnswer) => void;
+  submitAnswer: (
+    game_id: number,
+    question_id: number,
+    answer_id: number
+  ) => void;
+}
+
+export const GameContext = createContext<IGameContext | null>(null);

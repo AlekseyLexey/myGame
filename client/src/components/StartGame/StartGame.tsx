@@ -5,13 +5,14 @@ import { CLIENT_ROUTES } from "@/types/enums";
 export const StartGame = () => {
   const navigate = useNavigate();
 
+  const handleStartGame = () => {
+    navigate(CLIENT_ROUTES.GAME);
+  };
+
   return (
     <>
       <h2>StartGame</h2>
-      <Button
-        onClick={() => navigate(CLIENT_ROUTES.GAME)}
-        buttonText="Начать игру"
-      />
+      <Button onClick={handleStartGame} buttonText="Начать игру" />
     </>
   );
 };
