@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 // !РАССКОМЕНТИРУЙ КОГДА СОЗДАШЬ МОДЕЛЬ
-// const { User } = require("../../db/models");
+const { User } = require("../../db/models");
 const {
   generateTokens,
   saveToken,
