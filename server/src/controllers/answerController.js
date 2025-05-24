@@ -16,7 +16,7 @@ const postAnswer = async (req,res,next) => {
             const gamePoint = updateGameScore(point,game_id,user_id)
         }
 
-        res.status(200).json(answer)
+        res.status(201).json(answer)
     }catch(error){
         next(error)
     }
