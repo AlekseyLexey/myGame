@@ -2,13 +2,24 @@ import $api from "@/config/axiosConfig";
 
 const enum API_URL {
   GET_ALL_CATEGORIES = "/category",
-  GET_GAME = "/games",
+  GAME = "/game",
+  GAME_ALL = "/game/mygame",
   SUBMIT_ANSWER = "/games/submit-answer",
 }
 
 export const gameApi = {
+  createGame: async () => {
+    const { data } = await $api.post(API_URL.GAME);
+    return data;
+  },
+
   getGame: async () => {
-    const { data } = await $api.get(API_URL.GET_GAME);
+    const { data } = await $api.get(API_URL.GAME);
+    return data;
+  },
+
+  getAllGames: async () => {
+    const { data } = await $api.get(API_URL.GAME_ALL);
     return data;
   },
 

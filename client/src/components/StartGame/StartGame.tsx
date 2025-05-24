@@ -1,12 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../UI/Button/Button";
 import { CLIENT_ROUTES } from "@/types/enums";
+import { gameApi } from "@/services/api/gameApi";
+import { useGame } from "@/app/store/GameContext/hooks/useGame";
 
 export const StartGame = () => {
+  const { createGame } = useGame();
   const navigate = useNavigate();
 
   const handleStartGame = () => {
-    navigate(CLIENT_ROUTES.GAME);
+    gameApi.createGame().then((data) => {
+      createGame(data.data);
+      navigate(CLIENT_ROUTES.GAME);
+    });
   };
 
   return (

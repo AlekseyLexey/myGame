@@ -6,7 +6,7 @@ interface IGameContext {
   isModalOpen: boolean;
   currentQuestion: IQuestion | null;
   selectedAnswer: IAnswer | null;
-  updateGame: () => void;
+  updateGame: (data: IGame) => void;
   openModal: (question: IQuestion) => void;
   closeModal: () => void;
   selectAnswer: (answer: IAnswer) => void;
@@ -16,6 +16,7 @@ interface IGameContext {
     answer_id: number
   ) => void;
   markQuestionAnswered: (question_id: number) => void;
+  createGame: (data: IGame) => void;
 }
 
 export const GameContext = createContext<IGameContext | null>(null);

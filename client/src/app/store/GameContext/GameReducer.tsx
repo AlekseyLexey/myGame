@@ -42,6 +42,12 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
           : null,
       };
 
+    case "CREATE_GAME":
+      return {
+        ...state,
+        game: action.payload,
+      };
+
     default:
       return state;
   }

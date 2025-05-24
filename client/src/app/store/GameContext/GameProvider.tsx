@@ -1,17 +1,11 @@
 import { useReducer } from "react";
-import type { GameState, IAnswer, IQuestion } from "@/types/game";
+import type { GameState, IAnswer, IGame, IQuestion } from "@/types/game";
 import { GameContext } from "./GameContext";
 import { gameApi } from "@/services/api/gameApi";
 import { gameReducer } from "./GameReducer";
 
 const initialState: GameState = {
-  game: {
-    id: 1,
-    user_id: 1,
-    score: 0,
-    is_finished: false,
-    answered_questions: [],
-  },
+  game: null,
   isModalOpen: false,
   currentQuestion: null,
   selectedAnswer: null,
@@ -49,9 +43,12 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const updateGame = async () => {
-    const game = await gameApi.getGame();
-    dispatch({ type: "UPDATE_GAME", payload: game });
+  const updateGame = async (data: IGame) => {
+    dispatch({ type: "UPDATE_GAME", payload: data });
+  };
+
+  const createGame = async (data: IGame) => {
+    dispatch({ type: "CREATE_GAME", payload: data });
   };
 
   return (
@@ -64,6 +61,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         submitAnswer,
         updateGame,
         markQuestionAnswered,
+        createGame,
       }}
     >
       {children}
