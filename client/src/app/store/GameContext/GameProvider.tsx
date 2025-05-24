@@ -42,8 +42,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const updateScore = async (score: number, isCorrect: boolean) => {
-    dispatch({ type: "UPDATE_SCORE", payload: { score, isCorrect } });
+  const updateScore = async (points: number, isCorrect: boolean) => {
+    dispatch({ type: "UPDATE_SCORE", payload: { points, isCorrect } });
   };
 
   const updateGame = async (data: IGame) => {

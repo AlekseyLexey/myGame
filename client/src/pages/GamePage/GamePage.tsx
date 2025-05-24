@@ -4,6 +4,7 @@ import Score from "@/components/Score/Score";
 import { gameApi } from "@/services/api/gameApi";
 import type { ICategory } from "@/types/game";
 import { useEffect, useState } from "react";
+import styles from "./GamePage.module.scss"; // Импорт стилей
 
 export const GamePage = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);
@@ -16,9 +17,9 @@ export const GamePage = () => {
   }, []);
 
   return (
-    <div>
-      <h1>GamePage</h1>
-      <Score />
+    <div className={styles.container}>
+      {" "}
+      <h1 className={styles.title}>GamePage</h1> <Score />
       <CategoriesContainer categories={categories} />
       {isModalOpen && currentQuestion && game && (
         <QuestionModal question={currentQuestion} />

@@ -21,11 +21,10 @@ export const QuestionModal = ({ question }: { question: IQuestion }) => {
     try {
       await submitAnswer(game_id, question_id, answer_id);
       if (selectedAnswer?.is_correct) {
-        console.log("question.points =>>>>>>>>>>>>>>>>>>>", question.points);
-        updateScore(question.points, selectedAnswer.is_correct);
+        updateScore(question.points, true);
         alert(`Вы ответили правильно! И заработали ${question.points} очков`);
       } else {
-        updateScore(question.points, selectedAnswer.is_correct);
+        updateScore(question.points, false);
         alert("К сожалению, вы ответили неправильно");
       }
       closeModal();
