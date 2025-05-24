@@ -34,6 +34,21 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         game: action.payload,
       };
 
+    case "UPDATE_SCORE":
+      return {
+        ...state,
+        game: state.game
+          ? {
+              ...state.game,
+              score:
+                state.game.score +
+                (action.payload.isCorrect
+                  ? action.payload.points
+                  : -action.payload.points),
+            }
+          : null,
+      };
+
     default:
       return state;
   }

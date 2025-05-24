@@ -55,4 +55,5 @@ export type GameAction =
       type: "MARK_QUESTION_ANSWERED";
       payload: { question_id: number };
     }
-  | { type: "CREATE_GAME"; payload: IGame };
+  | { type: "CREATE_GAME"; payload: IGame }
+  | { type: "UPDATE_SCORE"; payload: number };

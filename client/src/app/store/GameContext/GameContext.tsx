@@ -17,6 +17,7 @@ interface IGameContext {
   ) => void;
   markQuestionAnswered: (question_id: number) => void;
   createGame: (data: IGame) => void;
+  updateScore: (score: number, isCorrect: boolean) => void;
 }
 
 export const GameContext = createContext<IGameContext | null>(null);

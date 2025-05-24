@@ -42,6 +42,10 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const updateScore = async (score: number, isCorrect: boolean) => {
+    dispatch({ type: "UPDATE_SCORE", payload: { score, isCorrect } });
+  };
+
   const updateGame = async (data: IGame) => {
     dispatch({ type: "UPDATE_GAME", payload: data });
   };
@@ -59,6 +63,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         selectAnswer,
         submitAnswer,
         updateGame,
+        updateScore,
         markQuestionAnswered,
         createGame,
       }}

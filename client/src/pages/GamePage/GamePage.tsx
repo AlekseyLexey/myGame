@@ -1,5 +1,6 @@
 import { useGame } from "@/app/store/GameContext/hooks/useGame";
 import { CategoriesContainer, QuestionModal } from "@/components";
+import Score from "@/components/Score/Score";
 import { gameApi } from "@/services/api/gameApi";
 import type { ICategory } from "@/types/game";
 import { useEffect, useState } from "react";
@@ -17,6 +18,7 @@ export const GamePage = () => {
   return (
     <div>
       <h1>GamePage</h1>
+      <Score />
       <CategoriesContainer categories={categories} />
       {isModalOpen && currentQuestion && game && (
         <QuestionModal question={currentQuestion} />

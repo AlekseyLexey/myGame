@@ -4,8 +4,14 @@ import styles from "./QuestionModal.module.scss";
 import { Button } from "../UI/Button/Button";
 
 export const QuestionModal = ({ question }: { question: IQuestion }) => {
-  const { selectedAnswer, game, selectAnswer, submitAnswer, closeModal } =
-    useGame();
+  const {
+    selectedAnswer,
+    game,
+    selectAnswer,
+    submitAnswer,
+    closeModal,
+    updateScore,
+  } = useGame();
 
   const handleSubmitAnswer = async (
     game_id: number,
@@ -15,8 +21,11 @@ export const QuestionModal = ({ question }: { question: IQuestion }) => {
     try {
       await submitAnswer(game_id, question_id, answer_id);
       if (selectedAnswer?.is_correct) {
+        console.log("question.points =>>>>>>>>>>>>>>>>>>>", question.points);
+        updateScore(question.points, selectedAnswer.is_correct);
         alert(`Вы ответили правильно! И заработали ${question.points} очков`);
       } else {
+        updateScore(question.points, selectedAnswer.is_correct);
         alert("К сожалению, вы ответили неправильно");
       }
       closeModal();
