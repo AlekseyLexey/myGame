@@ -3,7 +3,7 @@ export interface IGame {
   user_id: number;
   score: number;
   is_finished: boolean;
-  answered_questions: IAnsweredQuestion[];
+  game_answer_question: IAnsweredQuestion[];
 }
 
 export interface IAnsweredQuestion {

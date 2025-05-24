@@ -1,13 +1,13 @@
-const {searchCategory} = require('../services/categoryService')
+const { searchCategory } = require("../services/categoryService");
 
-const getCategory = async (req,res,next) => {
-    try{
-        const category = await searchCategory()
+const getCategory = async (req, res, next) => {
+  try {
+    const category = await searchCategory();
 
-        res.status(200).json(category)
-    }catch(error){
-        next(error)
-    }
-}
+    res.status(200).json(category);
+  } catch (error) {
+    next(error);
+  }
+};
 
-module.exports = {getCategory}
+module.exports = { getCategory };

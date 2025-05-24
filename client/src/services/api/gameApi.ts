@@ -4,7 +4,7 @@ const enum API_URL {
   GET_ALL_CATEGORIES = "/category",
   GAME = "/game",
   GAME_ALL = "/game/mygame",
-  SUBMIT_ANSWER = "/games/submit-answer",
+  SUBMIT_ANSWER = "/answer",
 }
 
 export const gameApi = {

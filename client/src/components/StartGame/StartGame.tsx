@@ -10,7 +10,7 @@ export const StartGame = () => {
 
   const handleStartGame = () => {
     gameApi.createGame().then((data) => {
-      createGame(data.data);
+      createGame(data);
       navigate(CLIENT_ROUTES.GAME);
     });
   };

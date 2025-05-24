@@ -28,20 +28,6 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         game: action.payload,
       };
 
-    case "MARK_QUESTION_ANSWERED":
-      return {
-        ...state,
-        game: state.game
-          ? {
-              ...state.game,
-              answered_questions: [
-                ...state.game.answered_questions,
-                action.payload,
-              ],
-            }
-          : null,
-      };
-
     case "CREATE_GAME":
       return {
         ...state,

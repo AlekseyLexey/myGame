@@ -37,9 +37,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   ) => {
     if (state.selectedAnswer) {
       await gameApi.submitAnswer(game_id, question_id, answer_id);
-      const updatedGame = await gameApi.getGame();
-      dispatch({ type: "UPDATE_GAME", payload: updatedGame });
-      closeModal();
+      const actualGame = await gameApi.getGame();
+      dispatch({ type: "UPDATE_GAME", payload: actualGame });
     }
   };
 

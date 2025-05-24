@@ -9,7 +9,7 @@ export const GamePage = () => {
   const { isModalOpen, currentQuestion, game } = useGame();
 
   useEffect(() => {
-    gameApi.createGame().then((data) => {
+    gameApi.getAllCategories().then((data) => {
       setCategories(data);
     });
   }, []);

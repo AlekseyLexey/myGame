@@ -4,14 +4,8 @@ import styles from "./QuestionModal.module.scss";
 import { Button } from "../UI/Button/Button";
 
 export const QuestionModal = ({ question }: { question: IQuestion }) => {
-  const {
-    selectedAnswer,
-    game,
-    selectAnswer,
-    markQuestionAnswered,
-    submitAnswer,
-    closeModal,
-  } = useGame();
+  const { selectedAnswer, game, selectAnswer, submitAnswer, closeModal } =
+    useGame();
 
   const handleSubmitAnswer = async (
     game_id: number,
@@ -20,7 +14,6 @@ export const QuestionModal = ({ question }: { question: IQuestion }) => {
   ) => {
     try {
       await submitAnswer(game_id, question_id, answer_id);
-      markQuestionAnswered(question_id);
       if (selectedAnswer?.is_correct) {
         alert(`Вы ответили правильно! И заработали ${question.points} очков`);
       } else {
