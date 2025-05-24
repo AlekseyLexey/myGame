@@ -2,4 +2,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: var(--transition);
+
+  background-color: rgb(134, 200, 255); 
+  border-bottom: 2px solid rgb(3, 23, 39); 
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  h2 {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
 }
