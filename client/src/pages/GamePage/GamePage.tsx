@@ -3,6 +3,7 @@ import { CategoriesContainer, QuestionModal } from "@/components";
 import { gameApi } from "@/services/api/gameApi";
 import type { ICategory } from "@/types/game";
 import { useEffect, useState } from "react";
+import styles from "./GamePage.module.scss"; // Импорт стилей
 
 export const GamePage = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);
@@ -15,8 +16,8 @@ export const GamePage = () => {
   }, []);
 
   return (
-    <div>
-      <h1>GamePage</h1>
+    <div className={styles.container}> {/* Применение стиля контейнера */}
+      <h1 className={styles.title}>GamePage</h1> {/* Применение стиля заголовка */}
       <CategoriesContainer categories={categories} />
       {isModalOpen && currentQuestion && game && (
         <QuestionModal question={currentQuestion} />
