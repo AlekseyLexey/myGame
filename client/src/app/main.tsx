@@ -2,9 +2,12 @@ import { createRoot } from "react-dom/client";
 import "../styles/index.scss";
 import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
+import { UserProvider } from "./store/UserStore/UserProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <UserProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </UserProvider>
 );

@@ -1,32 +1,7 @@
-import { Route, Routes } from "react-router-dom";
-import { Layout } from "./layout/Layout";
-import {
-  GamePage,
-  SignInPage,
-  SignUpPage,
-  ProfilePage,
-  MainPage,
-} from "@/pages";
-import { CLIENT_ROUTES } from "@/types/enums";
-import { UserProvider } from "./store/UserStore/UserProvider";
-import { GameLayout } from "./layout/GameLayout";
+import AppRouter from "./router/AppRouter";
 
 function App() {
-  return (
-    <UserProvider>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route element={<GameLayout />}>
-            <Route path={CLIENT_ROUTES.MAIN} element={<MainPage />} />
-            <Route path={CLIENT_ROUTES.GAME} element={<GamePage />} />
-          </Route>
-          <Route path={CLIENT_ROUTES.SIGN_IN} element={<SignInPage />} />
-          <Route path={CLIENT_ROUTES.SIGN_UP} element={<SignUpPage />} />
-          <Route path={CLIENT_ROUTES.PROFILE} element={<ProfilePage />} />
-        </Route>
-      </Routes>
-    </UserProvider>
-  );
+  return <AppRouter />;
 }
 
 export default App;
