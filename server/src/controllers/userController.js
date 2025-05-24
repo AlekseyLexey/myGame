@@ -8,9 +8,9 @@ const cookieConfig = require("../config/cookieConfig");
 
 const registration = async (req, res, next) => {
   try {
-    const data = req.body;
+    const { username, password } = req.body;
 
-    const userData = await registrationService(data);
+    const userData = await registrationService(username, password);
 
     res.cookie("refreshToken", userData.refreshToken, cookieConfig);
 
@@ -22,9 +22,9 @@ const registration = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   try {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
-    const userData = await loginService(email, password);
+    const userData = await loginService(username, password);
 
     res.cookie("refreshToken", userData.refreshToken, cookieConfig);
 

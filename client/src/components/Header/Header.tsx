@@ -3,12 +3,14 @@ import { Button } from "../UI/Button/Button";
 import styles from "./Header.module.scss";
 import { CLIENT_ROUTES } from "@/types/enums";
 import { useNavigate } from "react-router-dom";
+import { logoutReq } from "@/services/api/userApi";
 
 export const Header = () => {
   const { user, setUser } = useUser();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await logoutReq();
     setUser(null);
     navigate(CLIENT_ROUTES.SIGN_IN);
   };
