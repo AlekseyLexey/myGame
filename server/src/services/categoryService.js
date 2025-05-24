@@ -1,3 +1,5 @@
+const { Category, Question, Answer } = require('../../db/models')
+
 const searchCategory = async() => {
     const data = await Category.findAll({
         include: [{
