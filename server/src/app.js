@@ -7,8 +7,7 @@ const app = express();
 
 serverConfig(app);
 
-// !РАССКОМЕНТИРУЙ КОГДА СОЗДАШЬ МОДЕЛИ
-// app.use("/api", indexRoutes);
+app.use("/api", indexRoutes);
 app.use(errorMiddleware);
 
 module.exports = app;

@@ -1,6 +1,9 @@
 export { Category } from "./Category/Category";
 export { Question } from "./Question/Question";
+export { Answer } from "./Answer/Answer";
 export { Header } from "./Header/Header";
 export { CategoriesContainer } from "./CategoriesContainer/CategoriesContainer";
+export { StartGame } from "./StartGame/StartGame";
+export { AuthForm } from "./AuthForm/AuthForm";
 export { Button } from "./UI/Button/Button";
 export { Input } from "./UI/Input/Input";

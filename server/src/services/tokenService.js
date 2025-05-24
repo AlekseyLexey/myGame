@@ -1,6 +1,5 @@
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-// !РАССКОМЕНТИРУЙ КОГДА СОЗДАШЬ МОДЕЛЬ
 const { Token } = require("../../db/models");
 
 const generateTokens = (payload) => {

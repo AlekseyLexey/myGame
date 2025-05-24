@@ -1,5 +1,4 @@
 const bcrypt = require("bcrypt");
-// !РАССКОМЕНТИРУЙ КОГДА СОЗДАШЬ МОДЕЛЬ
 const { User } = require("../../db/models");
 const {
   generateTokens,
@@ -18,6 +17,7 @@ const registrationService = async (username, password) => {
   }
 
   const hashPassword = await bcrypt.hash(password, 3);
+
   const user = await User.create({ username, password: hashPassword });
 
   const { password: _, ...payload } = user.get({ plain: true });

@@ -5,7 +5,7 @@ const enum API_URL {
   REFRESH = "/refresh",
   LOGOUT = "/logout",
   REGISTRATION = "/registration",
-  AUTH = "/auth",
+  AUTH = "/login",
 }
 
 export const refreshReq = async (): Promise<IAuthResponse> => {
