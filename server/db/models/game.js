@@ -24,8 +24,14 @@ module.exports = (sequelize, DataTypes) => {
   }
   Game.init({
     user_id: DataTypes.INTEGER,
-    score: DataTypes.INTEGER,
-    is_finished: DataTypes.BOOLEAN
+    score: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    is_finished: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   }, {
     sequelize,
     modelName: 'Game',
