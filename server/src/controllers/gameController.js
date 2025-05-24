@@ -31,7 +31,7 @@ const postGame = async(req,res,next) => {
 
         const game = createGame(user_id)
 
-        res.status(200).json(game)
+        res.status(201).json(game)
     }catch(error){
         next(error)
     }
@@ -44,7 +44,7 @@ const putGame = async(req,res,next) => {
 
         const game = updateGame(user_id,game_id)
 
-        res.status(200).json(game)
+        res.status(201).json(game)
     }catch(error){
         next(error)
     }
