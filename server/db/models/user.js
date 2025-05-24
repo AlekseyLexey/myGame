@@ -15,6 +15,12 @@ module.exports = (sequelize, DataTypes) => {
         as: 'refresh_token',
         onDelete: 'CASCADE'
       });
+
+      User.hasMany(models.Game, {
+        foreignKey: 'user_id',
+        as: 'user_game',
+        onDelete: 'CASCADE'
+      })
     }
   }
   User.init({

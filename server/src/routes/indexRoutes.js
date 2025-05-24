@@ -7,11 +7,15 @@ const {
   refresh,
 } = require("../controllers/userController");
 
+const categoryRouter = require('./api/categoryRoter')
+
 // const authMiddleware = require("../middlewares/authMiddleware");
 
 router.post("/registration", registration);
 router.post("/login", login);
 router.post("/logout", logout);
 router.get("/refresh", refresh);
+
+router.use("/category",categoryRouter)
 
 module.exports = router;
