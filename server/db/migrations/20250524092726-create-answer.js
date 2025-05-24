@@ -23,11 +23,13 @@ module.exports = {
         type: Sequelize.BOOLEAN,
       },
       createdAt: {
-        allowNull: false,
+        defaultValue: Sequelize.fn("NOW"),
+        allowNull: true,
         type: Sequelize.DATE,
       },
       updatedAt: {
-        allowNull: false,
+        defaultValue: Sequelize.fn("NOW"),
+        allowNull: true,
         type: Sequelize.DATE,
       },
     });
