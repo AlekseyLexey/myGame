@@ -1,7 +1,7 @@
 import $api from "@/config/axiosConfig";
 
 const enum API_URL {
-  GET_ALL_CATEGORIES = "/categories",
+  GET_ALL_CATEGORIES = "/category",
   GET_GAME = "/games",
   SUBMIT_ANSWER = "/games/submit-answer",
 }

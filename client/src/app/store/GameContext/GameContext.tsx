@@ -15,6 +15,7 @@ interface IGameContext {
     question_id: number,
     answer_id: number
   ) => void;
+  markQuestionAnswered: (question_id: number) => void;
 }
 
 export const GameContext = createContext<IGameContext | null>(null);

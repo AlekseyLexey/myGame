@@ -10,7 +10,7 @@ export const Category: React.FC<ICategoryProps> = ({ category }) => {
   return (
     <div className={styles.category}>
       <h3>{category.category}</h3>
-      {category.questions.map((question) => (
+      {category.category_question.map((question) => (
         <Question key={question.id} question={question} />
       ))}
     </div>

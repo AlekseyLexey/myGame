@@ -7,10 +7,24 @@ interface IQuestionProps {
 }
 
 export const Question: React.FC<IQuestionProps> = ({ question }) => {
-  const { openModal } = useGame();
+  const { openModal, game } = useGame();
+
+  const isAnswered = game?.answered_questions.some(
+    (answeredQuestion) => answeredQuestion.question_id === question.id
+  );
+
+  const handleClick = () => {
+    if (isAnswered) {
+      return;
+    }
+    openModal(question);
+  };
 
   return (
-    <div className={styles.question} onClick={() => openModal(question)}>
+    <div
+      className={`${styles.question} ${isAnswered ? styles.answered : ""}`}
+      onClick={handleClick}
+    >
       {question.points}
     </div>
   );

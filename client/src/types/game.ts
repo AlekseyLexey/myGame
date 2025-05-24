@@ -3,13 +3,21 @@ export interface IGame {
   user_id: number;
   score: number;
   is_finished: boolean;
+  answered_questions: IAnsweredQuestion[];
+}
+
+export interface IAnsweredQuestion {
+  id?: number;
+  game_id?: number;
+  question_id: number;
+  is_answered?: boolean;
 }
 
 export interface ICategory {
   id: number;
   game_id: number;
   category: string;
-  questions: IQuestion[];
+  category_question: IQuestion[];
 }
 
 export interface IQuestion {
@@ -17,13 +25,13 @@ export interface IQuestion {
   category_id: number;
   question: string;
   points: number;
-  answers: IAnswer[];
+  question_answer: IAnswer[];
 }
 
 export interface IAnswer {
   id: number;
   question_id: number;
-  answer: string;
+  answer_option: string;
   is_correct: boolean;
 }
 
@@ -42,4 +50,8 @@ export type GameAction =
       type: "SUBMIT_ANSWER";
       payload: { game_id: number; question_id: number; answer_id: number };
     }
-  | { type: "UPDATE_GAME"; payload: IGame };
+  | { type: "UPDATE_GAME"; payload: IGame }
+  | {
+      type: "MARK_QUESTION_ANSWERED";
+      payload: { question_id: number };
+    };

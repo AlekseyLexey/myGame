@@ -7,3 +7,4 @@ export { StartGame } from "./StartGame/StartGame";
 export { AuthForm } from "./AuthForm/AuthForm";
 export { Button } from "./UI/Button/Button";
 export { Input } from "./UI/Input/Input";
+export { QuestionModal } from "./QuestionModal/QuestionModal";

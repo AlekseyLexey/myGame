@@ -5,7 +5,13 @@ import { gameApi } from "@/services/api/gameApi";
 import { gameReducer } from "./GameReducer";
 
 const initialState: GameState = {
-  game: { id: 1, user_id: 1, score: 0, is_finished: false },
+  game: {
+    id: 1,
+    user_id: 1,
+    score: 0,
+    is_finished: false,
+    answered_questions: [],
+  },
   isModalOpen: false,
   currentQuestion: null,
   selectedAnswer: null,
@@ -24,6 +30,10 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const selectAnswer = (answer: IAnswer) => {
     dispatch({ type: "SELECT_ANSWER", payload: answer });
+  };
+
+  const markQuestionAnswered = (question_id: number) => {
+    dispatch({ type: "MARK_QUESTION_ANSWERED", payload: { question_id } });
   };
 
   const submitAnswer = async (
@@ -53,6 +63,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         selectAnswer,
         submitAnswer,
         updateGame,
+        markQuestionAnswered,
       }}
     >
       {children}

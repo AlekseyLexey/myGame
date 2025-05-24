@@ -1,3 +1,7 @@
 .question {
   @include flex-center;
 }
+
+.answered {
+  background-color: #b80404;
+}
