@@ -3,14 +3,18 @@ export interface IGame {
   user_id: number;
   score: number;
   is_finished: boolean;
-  game_answer_question: IAnsweredQuestion[];
+  game_answer_question: IAnswersQuestion[];
 }
 
-export interface IAnsweredQuestion {
+export interface IAnswersQuestion {
   id?: number;
-  game_id?: number;
+  Answer_Question: IAnswerQuestion;
+}
+
+export interface IAnswerQuestion {
+  game_id: number;
   question_id: number;
-  is_answered?: boolean;
+  is_answered: boolean;
 }
 
 export interface ICategory {
@@ -55,5 +59,4 @@ export type GameAction =
       type: "MARK_QUESTION_ANSWERED";
       payload: { question_id: number };
     }
-  | { type: "CREATE_GAME"; payload: IGame }
-  | { type: "UPDATE_SCORE"; payload: number };
+  | { type: "CREATE_GAME"; payload: IGame };

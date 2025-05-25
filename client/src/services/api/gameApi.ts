@@ -5,6 +5,7 @@ const enum API_URL {
   GAME = "/game",
   GAME_ALL = "/game/mygame",
   SUBMIT_ANSWER = "/answer",
+  ACTUAL_GAME = "/actualGame",
 }
 
 export const gameApi = {
@@ -15,6 +16,11 @@ export const gameApi = {
 
   getGame: async () => {
     const { data } = await $api.get(API_URL.GAME);
+    return data;
+  },
+
+  getActualGame: async (game_id: number) => {
+    const { data } = await $api.get(API_URL.ACTUAL_GAME + `/${game_id}`);
     return data;
   },
 

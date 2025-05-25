@@ -11,17 +11,17 @@ const postAnswer = async (req, res, next) => {
 
     const { game_id, question_id, answer_id } = req.body;
 
-    const answer = await createAnswer(game_id, question_id);
+    await createAnswer(game_id, question_id);
 
     const correct = await isCorrectAnswer(answer_id);
 
-    if (correct) {
-      const point = await searchQuestion(question_id);
+    const point = await searchQuestion(question_id);
 
-      const gamePoint = await updateGameScore(point, game_id, user_id);
-    }
+    const updatedGame = correct
+      ? await updateGameScore(point, user_id, game_id)
+      : await updateGameScore(-point, user_id, game_id);
 
-    res.status(201).json(answer);
+    res.status(201).json(updatedGame);
   } catch (error) {
     next(error);
   }

@@ -1,7 +1,6 @@
 import type { IQuestion } from "@/types/game";
 import styles from "./Question.module.scss";
 import { useGame } from "@/app/store/GameContext/hooks/useGame";
-import { useCallback } from "react";
 
 interface IQuestionProps {
   question: IQuestion;
@@ -10,15 +9,20 @@ interface IQuestionProps {
 export const Question: React.FC<IQuestionProps> = ({ question }) => {
   const { openModal, game } = useGame();
 
-  const isAnswered = game?.game_answer_question?.some(
-    (answered) => answered.question_id === question.id
-  );
+  let isAnswered = false;
 
-  const handleClick = useCallback(() => {
+  for (const answer of game!.game_answer_question) {
+    if (answer.Answer_Question.question_id === question.id) {
+      isAnswered = true;
+      break;
+    }
+  }
+
+  const handleClick = () => {
     if (!isAnswered) {
       openModal(question);
     }
-  }, [isAnswered, openModal, question]);
+  };
 
   return (
     <div

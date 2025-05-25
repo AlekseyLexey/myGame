@@ -1,6 +1,6 @@
 const {
   searchGameUser,
-  searchGameNoFinish,
+  searchGamesNoFinish,
   updateGame,
   createGame,
 } = require("../services/gameService");
@@ -21,7 +21,7 @@ const getGame = async (req, res, next) => {
   try {
     const user_id = res.locals.user.id;
 
-    const game = await searchGameNoFinish(user_id);
+    const game = await searchGamesNoFinish(user_id);
 
     res.status(200).json(game);
   } catch (error) {

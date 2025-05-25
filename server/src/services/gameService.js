@@ -10,8 +10,8 @@ const searchGameUser = async (id) => {
   return data;
 };
 
-const searchGameNoFinish = async (id) => {
-  const data = await Game.findOne({
+const searchGamesNoFinish = async (id) => {
+  const data = await Game.findAll({
     where: {
       user_id: id,
       is_finished: false,
@@ -21,7 +21,7 @@ const searchGameNoFinish = async (id) => {
       {
         model: Question,
         as: "game_answer_question",
-        attributes: { exclude: ["createdAt", "updatedAt"] },
+        attributes: ["id"],
         through: {
           attributes: { exclude: ["createdAt", "updatedAt"] },
         },
@@ -37,7 +37,10 @@ const createGame = async (user_id) => {
     user_id: user_id,
   });
 
-  return data;
+  const game = data.get({ plain: true });
+  game.game_answer_question = [];
+
+  return game;
 };
 
 const updateGame = async (user_id, game_id) => {
@@ -56,7 +59,7 @@ const updateGame = async (user_id, game_id) => {
 
 module.exports = {
   searchGameUser,
-  searchGameNoFinish,
+  searchGamesNoFinish,
   createGame,
   updateGame,
 };

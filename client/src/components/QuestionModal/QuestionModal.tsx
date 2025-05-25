@@ -2,16 +2,11 @@ import { useGame } from "@/app/store/GameContext/hooks/useGame";
 import type { IQuestion } from "@/types/game";
 import styles from "./QuestionModal.module.scss";
 import { Button } from "../UI/Button/Button";
+import { gameApi } from "@/services/api/gameApi";
 
 export const QuestionModal = ({ question }: { question: IQuestion }) => {
-  const {
-    selectedAnswer,
-    game,
-    selectAnswer,
-    submitAnswer,
-    closeModal,
-    updateScore,
-  } = useGame();
+  const { selectedAnswer, game, selectAnswer, closeModal, updateGame } =
+    useGame();
 
   const handleSubmitAnswer = async (
     game_id: number,
@@ -19,12 +14,12 @@ export const QuestionModal = ({ question }: { question: IQuestion }) => {
     answer_id: number
   ) => {
     try {
-      await submitAnswer(game_id, question_id, answer_id);
+      await gameApi.submitAnswer(game_id, question_id, answer_id);
+      const actualGame = await gameApi.getActualGame(game_id);
+      updateGame(actualGame);
       if (selectedAnswer?.is_correct) {
-        updateScore(question.points, true);
         alert(`Вы ответили правильно! И заработали ${question.points} очков`);
       } else {
-        updateScore(question.points, false);
         alert("К сожалению, вы ответили неправильно");
       }
       closeModal();

@@ -10,14 +10,8 @@ interface IGameContext {
   openModal: (question: IQuestion) => void;
   closeModal: () => void;
   selectAnswer: (answer: IAnswer) => void;
-  submitAnswer: (
-    game_id: number,
-    question_id: number,
-    answer_id: number
-  ) => void;
   markQuestionAnswered: (question_id: number) => void;
   createGame: (data: IGame) => void;
-  updateScore: (score: number, isCorrect: boolean) => void;
 }
 
 export const GameContext = createContext<IGameContext | null>(null);
